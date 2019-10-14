@@ -81,4 +81,16 @@ INSERT INTO Booking (Clientid, TourName, EventMonth, EventDay, EventYear, Paymen
 INSERT INTO Booking (Clientid, TourName, EventMonth, EventDay, EventYear, Payment, DateBooked) VALUES (2, 'West', 'Jan', 29, 2016, 225, '2015-12-17');
 INSERT INTO Booking (Clientid, TourName, EventMonth, EventDay, EventYear, Payment, DateBooked) VALUES (3, 'West', 'Jan', 29, 2016, 200, '2015-12-18');
 
-Select * from Client
+Select * from Client;
+
+Select C.GivenName, C.Surname, T.TourName, T.Description, E.EventYear, E.EventMonth, E.EventDay, E.EventFee, B.DateBooked, B.Payment
+From Client C, Tour T, Event E, Booking B;
+
+Select EventMonth, TourName, COUNT(*) as 'Num Bookings'
+From Booking
+Group By TourName, EventMonth;
+
+Select EventMonth, TourName, COUNT(*) as 'Num Bookings'
+From Booking
+Where Payment > AVG(Payment)
+Group By TourName, EventMonth;
