@@ -95,3 +95,26 @@ From Booking
 Where Payment > (SELECT AVG(Payment) FROM Booking)
 Order By Payment ASC;
 
+CREATE VIEW Task_5 AS
+Select * from Client;
+
+Select *
+From Booking
+Where Payment < (SELECT AVG(Payment) FROM Booking)
+Order By Payment ASC;
+/* by checking smaller than average instead of bigger than
+it proves that there is 1 smaller than which is 125 and 
+there is 3 bigger which all are 225 with nothing in between showing */
+
+Select EventMonth, TourName, DateBooked
+From Booking
+WHERE TourName = 'North';
+/* by there being 5 results for north, proves that the count for bookings is
+correct because it says there is a total of 5 results within 2 months times */
+
+
+Select C.GivenName, C.ClientID, B.ClientID as 'bookings client id'
+From Client C
+INNER JOIN Booking B
+ON B.ClientID = C.ClientID;
+/* this proves the client ID is correct as it is the same in Bookings */
