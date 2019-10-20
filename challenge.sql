@@ -90,11 +90,8 @@ Select EventMonth, TourName, COUNT(*) as 'Num Bookings'
 From Booking
 Group By TourName, EventMonth;
 
-Select EventMonth, TourName, COUNT(*) as 'Num Bookings'
-From Booking
-Where Payment > AVG(Payment)
-Group By TourName, EventMonth;
-
 Select *
 From Booking
-Where Payment > AVG(Payment);
+Where Payment > (SELECT AVG(Payment) FROM Booking)
+Order By Payment ASC;
+
